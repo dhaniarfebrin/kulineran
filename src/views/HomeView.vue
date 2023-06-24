@@ -1,18 +1,13 @@
+<script setup>
+import NavbarComponent from '@/components/NavbarComponent.vue';
+import HeroComponent from '@/components/HeroComponent.vue';
+</script>
+
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <NavbarComponent />
+    <div class="container">
+      <HeroComponent />
+    </div>
   </div>
 </template>
-
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
-</script>
