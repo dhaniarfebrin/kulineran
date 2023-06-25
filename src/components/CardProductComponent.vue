@@ -17,7 +17,13 @@ export default {
 </template>
 
 <style>
-    .card {
-        overflow: hidden;
-    }
+.card {
+    overflow: hidden;
+}
+
+.card>img {
+    max-height: 204px;
+    min-height: 204px;
+    overflow: hidden;
+}
 </style>
