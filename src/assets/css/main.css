@@ -2,6 +2,7 @@
 
 #app {
     font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
 }
 
 .router-link-exact-active {
@@ -10,4 +11,8 @@
 
 div.hero img {
     width: 70%;
+}
+
+div#app > div {
+    min-height: 100vh;
 }
