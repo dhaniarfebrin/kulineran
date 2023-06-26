@@ -11,7 +11,8 @@ export default {
         <div class="card-body d-flex flex-column">
             <h5 class="card-title fw-bold">{{ product.nama }}</h5>
             <p class="card-text">Rp. {{ product.harga }}</p>
-            <a href="#" class="btn btn-success ms-auto"><i class="bi bi-cart"></i> Order</a>
+            <router-link :to="`foods/${product.id}`" v-if="product.is_ready" class="btn btn-success ms-auto"><i class="bi bi-cart"></i> Order</router-link>
+            <button v-else class="btn btn-secondary ms-auto" type="button" disabled>Sold Out</button>
         </div>
     </div>
 </template>

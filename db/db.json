@@ -71,7 +71,7 @@
       "kode": "K-06",
       "nama": "Bakso",
       "harga": 10000,
-      "is_ready": true,
+      "is_ready": false,
       "gambar": "bakso.jpg"
     },
     {
