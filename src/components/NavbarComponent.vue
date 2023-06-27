@@ -1,6 +1,28 @@
 <script>
+import axios from 'axios';
+
 export default {
-    name: "NavbarComponent"
+    name: "NavbarComponent",
+    data() {
+        return {
+            cart: []
+        }
+    },
+    methods: {
+        setCart(data) {
+            this.cart = data;
+        }
+    },
+    mounted() {
+        axios
+            .get(`http://localhost:3000/keranjangs`)
+            .then((response) => {
+                this.setCart(response.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 }
 </script>
 
@@ -26,7 +48,7 @@ export default {
                         <router-link class="nav-link" to="/cart">
                             Cart
                             <i class="bi-cart-fill"></i>
-                            <span class="badge bg-success ms-1">0</span>
+                            <span class="badge bg-success ms-1 fw-normal">{{ cart.length }}</span>
                         </router-link>
                     </li>
                 </ul>
