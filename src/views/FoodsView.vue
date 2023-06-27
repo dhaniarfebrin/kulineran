@@ -50,6 +50,9 @@ export default {
                 </div>
                 <div class="col">
                     <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping"
+                            ><i class="bi bi-search"></i></span
+                        >
                         <input
                         v-model="search"
                         type="text"
@@ -59,9 +62,6 @@ export default {
                         aria-describedby="addon-wrapping"
                         @keyup="searchFood"
                         />
-                        <span class="input-group-text" id="addon-wrapping"
-                            ><i class="bi bi-search"></i></span
-                        >
                     </div>
                 </div>
             </div>

@@ -9,7 +9,8 @@ export default {
         return {
             product: {},
             param: '',
-            cartOrder: {}
+            cartOrder: {},
+            cart: 0
         }
     },
     methods: {
@@ -22,7 +23,7 @@ export default {
                 axios
                     .post('http://localhost:3000/keranjangs', this.cartOrder)
                     .then(() => {
-                        this.$router.push({ path: '/cart' })
+                        this.cart++ // menambah jumlah cart yang ada di navbar
                         this.$toast.success('Added to Cart', {
                             duration: 3000,
                             position: 'top-right'
@@ -58,7 +59,7 @@ export default {
 
 <template>
     <div>
-        <NavbarComponent />
+        <NavbarComponent :key="cart" />
         <div class="container mt-5">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">

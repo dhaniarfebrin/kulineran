@@ -5,12 +5,12 @@ export default {
     name: "NavbarComponent",
     data() {
         return {
-            cart: []
+            cart: 0
         }
     },
     methods: {
         setCart(data) {
-            this.cart = data;
+            this.cart = data.length;
         }
     },
     mounted() {
@@ -48,7 +48,7 @@ export default {
                         <router-link class="nav-link" to="/cart">
                             Cart
                             <i class="bi-cart-fill"></i>
-                            <span class="badge bg-success ms-1 fw-normal">{{ cart.length }}</span>
+                            <span class="badge bg-success ms-1 fw-normal">{{ cart }}</span>
                         </router-link>
                     </li>
                 </ul>
