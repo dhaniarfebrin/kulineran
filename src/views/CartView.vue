@@ -8,7 +8,8 @@ export default {
     data() {
         return {
             carts: [],
-            cart: 0
+            cart: 0,
+            orders: {}
         }
     },
     methods: {
@@ -36,6 +37,44 @@ export default {
                         position: 'top-right'
                     })
                 });
+        },
+        addOrder() {
+            if (!this.carts[0]) {
+                this.$toast.error('Cart is empty', {
+                    duration: 3000,
+                    position: 'top-right'
+                })
+            }
+            else if (this.orders.nama && this.orders.meja) {
+                this.orders.carts = this.carts
+                axios
+                    .post(`http://localhost:3000/pesanans`, this.orders)
+                    .then(() => {
+                        this.cart--
+                        this.carts.map(item => {
+                            axios // delete data keranjang
+                                .delete(`http://localhost:3000/keranjangs/${item.id}`)
+                                .catch((err) => {
+                                    this.$toast.error(err.message, {
+                                        duration: 3000,
+                                        position: 'top-right'
+                                    })
+                                });
+                        })
+                        this.$router.push({ path: '/success-order' })
+                    })
+                    .catch((err) => {
+                        this.$toast.error(err.message, {
+                            duration: 3000,
+                            position: 'top-right'
+                        })
+                    });
+            } else {
+                this.$toast.error('Pleas fill the form correctly', {
+                    duration: 3000,
+                    position: 'top-right'
+                })
+            }
         }
     },
     mounted() {
@@ -51,7 +90,7 @@ export default {
     computed: {
         priceTotal() { // menjumlahkan total harga
             return this.carts.reduce((items, data) => {
-                return items+(data.product.harga*data.qty)
+                return items + (data.product.harga * data.qty)
             }, 0)
         }
     }
@@ -116,6 +155,29 @@ export default {
                         </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <form action="#" class="mt-4" v-on:submit.prevent>
+                    <div class="form-group row mb-2">
+                        <div class="col-md-5">
+                            <label for="" class="form-label m-0 lh-1 d-flex align-items-center h-100">Customer Name</label>
+                        </div>
+                        <div class="col-md">
+                            <input type="text" v-model="orders.nama" name="nama" class="form-control shadow-sm">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-5">
+                            <label for="" class="form-label m-0 lh-1 d-flex align-items-center h-100">Table Number</label>
+                        </div>
+                        <div class="col-md">
+                            <input type="number" v-model="orders.meja" name="meja" class="form-control shadow-sm">
+                        </div>
+                    </div>
+                    <button @click="addOrder" type="submit" class="mt-3 px-4 btn btn-success rounded-pill btn-lg"><i
+                            class="bi bi-check me-2"></i> Order</button>
+                </form>
             </div>
         </div>
     </div>

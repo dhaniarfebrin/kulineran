@@ -99,41 +99,15 @@
       "gambar": "lontong-opor-ayam.jpg"
     }
   ],
-  "keranjangs": [
-    {
-      "qty": 3,
-      "product": {
-        "id": 3,
-        "kode": "K-03",
-        "nama": "Nasi Rames",
-        "harga": 12000,
-        "is_ready": true,
-        "gambar": "nasi-rames.jpg"
-      },
-      "id": 1
-    }
-  ],
+  "keranjangs": [],
   "pesanans": [
     {
-      "nama": "Afif",
-      "noMeja": "3",
-      "keranjangs": [
+      "nama": "DHANIAR FEBRIN WAHYUDI",
+      "meja": 12,
+      "carts": [
         {
-          "jumlah_pemesanan": "1",
-          "keterangan": "Pedes",
-          "products": {
-            "id": 1,
-            "kode": "K-01",
-            "nama": "Sate Ayam",
-            "harga": 16000,
-            "is_ready": true,
-            "gambar": "sate-ayam.jpg"
-          },
-          "id": 1
-        },
-        {
-          "jumlah_pemesanan": "1",
-          "products": {
+          "qty": 2,
+          "product": {
             "id": 2,
             "kode": "K-02",
             "nama": "Nasi Goreng Telur",
@@ -141,7 +115,7 @@
             "is_ready": true,
             "gambar": "nasi-goreng-telor.jpg"
           },
-          "id": 2
+          "id": 1
         }
       ],
       "id": 1
